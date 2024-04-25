@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kubernetes-dashboard
-  namespace: kube-system
+  namespace: gitops  # Change the namespace to gitops
   labels:
-    k8s-app: kubernetes-dashboard
+    app: kubernetes-dashboard
 spec:
   selector:
-    k8s-app: kubernetes-dashboard
+    app: kubernetes-dashboard
   ports:
     - protocol: TCP
       port: 443
