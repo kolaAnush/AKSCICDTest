@@ -1,21 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: updated-sample-deployment  # Change this name as needed
+  name: kubernetes-dashboard
+  namespace: kube-system
   labels:
-    app: nginx
+    k8s-app: kubernetes-dashboard
 spec:
-  replicas: 3
   selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+    k8s-app: kubernetes-dashboard
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 8443
